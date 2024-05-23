@@ -9,202 +9,15 @@ gpu=int(input("Which gpu number you would like to allocate:"))
 os.environ["CUDA_VISIBLE_DEVICES"]=str(gpu)
 
 
-# In[2]:
+# In[1]:
 
 
-from tensorflow.keras.applications.resnet50 import ResNet50
-#from keras.applications.vgg16 import VGG16
-from tensorflow.keras.applications.resnet50 import preprocess_input as rp
-from classification_models.keras import Classifiers
-from tensorflow.keras.applications.xception import preprocess_input as xp
-import sklearn.metrics as metrics
-import math
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-import seaborn as sns
-import pickle
-import tensorflow as tf
-import argparse
-import re
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from sklearn.model_selection import train_test_split
-import scipy.stats as stats
-import datetime
-import keras
-from tensorflow.keras.layers import  Input,Conv2D,BatchNormalization,Activation,Subtract,LeakyReLU,Add,Average,Lambda,MaxPool2D,Dropout,UpSampling2D,Concatenate,Multiply,GlobalAveragePooling2D,Dense,ZeroPadding2D,AveragePooling2D
-from tensorflow.keras.layers import concatenate,Flatten,Layer,ReLU, MaxPooling2D
-from tensorflow.keras.models import Model, load_model
-from tensorflow.keras.callbacks import CSVLogger, ModelCheckpoint, LearningRateScheduler
-from tensorflow.keras.optimizers import Adam
-import tensorflow.keras.backend as K
-from sklearn.svm import LinearSVC
-import matplotlib.pyplot as plt
-from numpy import loadtxt
-import numpy as np
-#from keras_cv.layers import RandomCutout
-from sklearn.model_selection import train_test_split
-from tensorflow.keras.applications.xception import preprocess_input
-from sklearn.metrics import accuracy_score
-from skimage.feature import hog,local_binary_pattern
-from skimage import data, exposure
-from skimage.transform import radon, rescale
-from skimage.filters import roberts, sobel, scharr, prewitt
-from classification_models.keras import Classifiers
-from skimage import feature
-import os,glob
-import numpy as np
-import cv2
-import glob
-import pickle
-import tensorflow as tf
-import pickle
-import argparse
-import re
-import datetime
-from tensorflow.keras.layers import  Input,Conv2D,BatchNormalization,Activation,Subtract,LeakyReLU,Add,Average,Lambda,MaxPool2D,Dropout,UpSampling2D,Concatenate,Multiply,GlobalAveragePooling2D,Dense,ZeroPadding2D,AveragePooling2D
-from tensorflow.keras.layers import concatenate,Flatten,ConvLSTM2D,LayerNormalization,GlobalAveragePooling2D
-from tensorflow.keras.models import Model, load_model
-from tensorflow.keras.callbacks import CSVLogger, ModelCheckpoint, LearningRateScheduler
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.models import Sequential
-import tensorflow.keras.backend as K
-from sklearn.svm import LinearSVC
-import numpy as np
-from tensorflow.keras.applications.resnet50 import ResNet50
-#from keras.applications.vgg16 import VGG16
-from tensorflow.keras.applications.resnet50 import preprocess_input as rp
-from classification_models.keras import Classifiers
-from tensorflow.keras.applications.xception import preprocess_input as xp
-import sklearn.metrics as metrics
-import math
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-import seaborn as sns
-from keras.utils import get_file
-import os,glob
-from tensorflow.compat.v1 import InteractiveSession
-import tensorflow as tf
-import keras
-from classification_models.keras import Classifiers
-import numpy as np
-import cv2
-import glob
-import pickle
-#import clahe
-import sklearn.metrics as metrics
-from sklearn.metrics import confusion_matrix , classification_report
-from matplotlib import pyplot as plt
-import tensorflow as tf
-import argparse
-import re
-import datetime
-import pandas as pd
-from sklearn.metrics import accuracy_score
-from sympy.solvers import solve
-from sympy import Symbol
-import seaborn as sns
-import numpy as np
-from tensorflow.keras.layers import  Input,Conv2D,BatchNormalization,Activation,Subtract,LeakyReLU,Add,Average,Lambda,MaxPool2D,Dropout,UpSampling2D,Concatenate,Multiply,GlobalAveragePooling2D,Dense,ZeroPadding2D,AveragePooling2D
-from tensorflow.keras.layers import concatenate,Flatten,Layer,ReLU, MaxPooling2D
-from tensorflow.keras.models import Model, load_model
-from tensorflow.keras.callbacks import CSVLogger, ModelCheckpoint, LearningRateScheduler
-from tensorflow.keras.optimizers import Adam
-import tensorflow.keras.backend as K
-from sklearn.svm import LinearSVC
-import matplotlib.pyplot as plt
-from numpy import loadtxt
-import pickle
-from sklearn.metrics import accuracy_score
-import pandas as pd
-from sklearn import metrics
-from sklearn.metrics import roc_auc_score
-from sklearn.metrics import roc_curve,auc
-from sklearn.metrics import f1_score
-import keras
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-from skimage.feature import hog,local_binary_pattern
-from skimage import data, exposure
-from skimage.transform import radon, rescale
-from skimage.filters import roberts, sobel, scharr, prewitt
-from skimage import feature
-import os,glob
-import numpy as np
-import cv2
-import glob
-import pickle
-import tensorflow as tf
-import pickle
-import argparse
-import re
-import datetime
-from tensorflow.keras.layers import  Input,Conv2D,BatchNormalization,Activation,Subtract,LeakyReLU,Add,Average,Lambda,MaxPool2D,Dropout,UpSampling2D,Concatenate,Multiply,GlobalAveragePooling2D,Dense,ZeroPadding2D,AveragePooling2D
-from tensorflow.keras.layers import concatenate,Flatten,ConvLSTM2D,LayerNormalization,GlobalAveragePooling2D
-from tensorflow.keras.models import Model, load_model
-from tensorflow.keras.callbacks import CSVLogger, ModelCheckpoint, LearningRateScheduler
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras import Sequential
-import tensorflow.keras.backend as K
-from sklearn.svm import LinearSVC
-import matplotlib.pyplot as plt
-from numpy import loadtxt
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-from skimage.feature import hog,local_binary_pattern
-from skimage import data, exposure
-from tensorflow.keras.layers import Layer
-from PIL import Image
-from numpy import asarray
-from sklearn.utils import shuffle
-import os
-import tensorflow as tf
-from tqdm import tqdm
-from sklearn.model_selection import train_test_split
-from keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.utils import img_to_array
-from tensorflow.keras.callbacks import EarlyStopping
-import numpy as np
-import tensorflow as tf   
-import keras
-from classification_models.keras import Classifiers
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import precision_recall_fscore_support
-from sklearn.metrics import accuracy_score
-from skimage.feature import hog,local_binary_pattern
-from tensorflow.keras.metrics import Recall, Precision
-from sklearn import metrics
-from sklearn.metrics import roc_auc_score
-from sklearn.metrics import roc_curve,auc
-from sklearn.metrics import f1_score
-import matplotlib.pyplot as plt
-from numpy import loadtxt
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import precision_recall_fscore_support
-from sklearn.metrics import accuracy_score
-from skimage.feature import hog,local_binary_pattern
-from tensorflow.keras.metrics import Recall, Precision
-from skimage import data, exposure
-from tensorflow.keras.layers import Layer
-from PIL import Image
-from numpy import asarray
-from sklearn.utils import shuffle
-import os
-import tensorflow as tf
-from tqdm import tqdm
-from sklearn.model_selection import train_test_split
-from keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.utils import img_to_array
-from tensorflow.keras.callbacks import EarlyStopping
-import numpy as np
-import tensorflow as tf
-from sklearn.model_selection import StratifiedKFold
-import pandas as pd
 
-import cv2
-import math
+
+
+# In[5]:
+
+
 
 
 
@@ -214,26 +27,335 @@ import math
 
 
 
-# In[3]:
+# In[22]:
 
 
 from tensorflow.keras.models import load_model
-model1=load_model("non-iid_densenet_adaptive_dp.h5")
-model2=load_model("non-iid_resnet_adaptive_dp.h5")
-model3=load_model("non-iid_MobileNetV2_adaptive_dp.h5")
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.losses import CategoricalCrossentropy
+
+# Load models with compile=False
+model1 = load_model("non-iid_densenet_adaptive_dp.h5", compile=False)
+model2 = load_model("non-iid_resnet_adaptive_dp.h5", compile=False)
+model3 = load_model("non-iid_MobileNetV2_adaptive_dp.h5", compile=False)
+
+# Compile each model
+optimizer = Adam(learning_rate=0.001)  # You can adjust the learning rate as needed
+loss_function =CategoricalCrossentropy()
+
+model1.compile(optimizer=optimizer, loss=loss_function, metrics=['accuracy'])
+model2.compile(optimizer=optimizer, loss=loss_function, metrics=['accuracy'])
+model3.compile(optimizer=optimizer, loss=loss_function, metrics=['accuracy'])
+
+import numpy as np
+test=np.load("test.npy")
+label=np.load("one_hot_labels.npy")
+test=test/255
+
+
+# In[ ]:
+
+
+test_data=test
+true_labels=label
+import numpy as np
+import tensorflow as tf
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+# Load test data and labels
+# test_data = np.load('test.npy')
+# true_labels = np.load('label.npy')
+
+# # Load models
+# model1 = tf.keras.models.load_model('model1.h5')
+# model2 = tf.keras.models.load_model('model2.h5')
+# model3 = tf.keras.models.load_model('model3.h5')
+
+# Make predictions for each model
+preds1 = model1.predict(test_data)
+preds2 = model2.predict(test_data)
+preds3 = model3.predict(test_data)
+acc=[]
+# Extract predicted probabilities for correct class
+s_correct_values = []
+for preds, true_label in zip([preds1, preds2, preds3], true_labels):
+    correct_class_prob = preds[np.arange(len(true_label)), true_label]
+    s_correct_values.append(np.mean(correct_class_prob))
+
+gamma_values = np.linspace(1.0, 20.0, 10)
+
+# Define accuracies for each model
+accuracies = [.8260, .8140,.8040]  # Example accuracies for Model 1, Model 2, Model 3
+for gamma in gamma_values:
+# Calculate weights using power weighting function
+ weights = [accuracy * (s_correct ** gamma)
+           for accuracy, s_correct in zip(accuracies, s_correct_values)]
+
+# Normalize weights
+ weights = np.array(weights) / np.sum(weights)
+
+# Ensemble predictions
+ ensemble_preds = weights[0] * preds1 + weights[1] * preds2 + weights[2] * preds3
+
+# Convert probabilities to class labels
+ ensemble_labels = np.argmax(ensemble_preds, axis=1)
+ from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
+# Convert ensemble labels to integer format
+ label_encoder = LabelEncoder()
+ ensemble_labels_int = label_encoder.fit_transform(ensemble_labels)
+
+# Convert integer labels to one-hot encoding
+ onehot_encoder = OneHotEncoder(sparse=False)
+ ensemble_labels = onehot_encoder.fit_transform(ensemble_labels_int.reshape(-1, 1))
+# Evaluate ensemble performance
+ accuracy = accuracy_score(true_labels, ensemble_labels)
+ acc.append(accuracy)
+#  precision = precision_score(true_labels, ensemble_labels, average='weighted')
+#  recall = recall_score(true_labels, ensemble_labels, average='weighted')
+#  f1 = f1_score(true_labels, ensemble_labels, average='weighted')
+
+#  print("Ensemble Performance:")
+#  print("Accuracy:", accuracy)
+#  print("Precision:", precision)
+#  print("Recall:", recall)
+#  print("F1 Score:", f1)
+plt.plot(acc)
+plt.grid(visible=True)
+
+
+# In[ ]:
+
+
+import numpy as np
+from sklearn.manifold import TSNE
+import matplotlib.pyplot as plt
+from tensorflow.keras.models import load_model, Model
+from sklearn.preprocessing import LabelEncoder
+
+# Load the models with compile=False
+model1 = load_model("non-iid_densenet_adaptive_dp.h5", compile=False)
+model2 = load_model("non-iid_resnet_adaptive_dp.h5", compile=False)
+model3 = load_model("non-iid_MobileNetV2_adaptive_dp.h5", compile=False)
+
+# Load and preprocess the test data
+test_data = np.load("test.npy")
+test_data = test_data / 255
+
+# Load the one-hot encoded labels
+true_labels = np.load("one_hot_labels.npy")
+
+# Convert one-hot encoded labels to categorical labels
+categorical_labels = np.argmax(true_labels, axis=1)
+unique_classes = np.unique(categorical_labels)
+print(f"Unique classes in the labels: {unique_classes}")
+
+# Make predictions for each model
+preds1 = model1.predict(test_data)
+preds2 = model2.predict(test_data)
+preds3 = model3.predict(test_data)
+
+# Extract predicted probabilities for correct class
+s_correct_values = []
+for preds in [preds1, preds2, preds3]:
+    correct_class_prob = preds[np.arange(len(categorical_labels)), categorical_labels]
+    s_correct_values.append(np.mean(correct_class_prob))
+
+# Define gamma for power weighting function
+gamma = 1.1  # Example value, can be adjusted
+
+# Define accuracies for each model
+accuracies = [0.814, 0.804, 0.798]  # Example accuracies for Model 1, Model 2, Model 3
+
+# Calculate weights using power weighting function
+weights = [accuracy * (s_correct ** gamma)
+           for accuracy, s_correct in zip(accuracies, s_correct_values)]
+
+# Normalize weights
+weights = np.array(weights) / np.sum(weights)
+
+# Ensemble predictions
+ensemble_preds = weights[0] * preds1 + weights[1] * preds2 + weights[2] * preds3
+
+# Convert probabilities to class labels
+ensemble_labels = np.argmax(ensemble_preds, axis=1)
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[25]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[2]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[74]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
 
 
 # In[4]:
 
 
-test=np.load("test.npy")
-label=np.load("one_hot_labels.npy")
-test=test/255
 
-# one_hot_labels=label
 
 
 # In[5]:
+
+
+
+
+
+# In[ ]:
 
 
 
@@ -245,31 +367,25 @@ test=test/255
 
 
 
-# In[7]:
+# In[86]:
 
 
 
 
 
-# In[8]:
+# In[ ]:
 
 
 
 
 
-# In[9]:
-
-
-# test=test/255
-
-
-# In[10]:
+# In[ ]:
 
 
 
 
 
-# In[11]:
+# In[64]:
 
 
 
@@ -299,7 +415,7 @@ test=test/255
 
 
 
-# In[12]:
+# In[88]:
 
 
 accuracy_weighted=[]
@@ -387,7 +503,7 @@ def weighted_average(true_label,model1_labels, model1_accuracy, model2_labels, m
 
 
 
-# In[13]:
+# In[89]:
 
 
 label = np.argmax(label, axis=1)
@@ -408,13 +524,13 @@ for i in range(len(label)):
 acc_dense=(correct/len(label))
 
 
-# In[15]:
+# In[13]:
 
 
 acc_dense
 
 
-# In[16]:
+# In[11]:
 
 
 correct=0
@@ -430,7 +546,7 @@ acc_resnet=(correct/len(label))
 acc_resnet
 
 
-# In[17]:
+# In[12]:
 
 
 correct=0
@@ -446,7 +562,7 @@ acc_inception=(correct/len(label))
 acc_inception
 
 
-# In[18]:
+# In[94]:
 
 
 import numpy as np
@@ -468,30 +584,25 @@ for i, label in enumerate(label):
 # print(one_hot_matrix)
 
 
-# In[19]:
+# In[10]:
 
 
-one_hot_matrix.shape
+# one_hot_matrix.shape
 
 
-# In[20]:
+# In[96]:
 
 
-# test=test/255
+test=test/255
 
 
-# In[21]:
+# In[97]:
 
 
-# model=load_model("fl_non-IID_DenseNet201_50.h5")
-# correct=0
-# # pred_inception=model.predict(test)
-# # print(pred_inception)
-# loss,accuracy=model.evaluate(test2,label2)
-# accuracy
 
 
-# In[22]:
+
+# In[6]:
 
 
 pred_dense=model1.predict(test)
@@ -501,49 +612,31 @@ pred_resnet=model2.predict(test)
 pred_inception=model3.predict(test)
 
 
-# In[23]:
-
-
-pred_dense
-
-
-# In[24]:
-
-
-# pred_resnet
-
-
-# In[25]:
+# In[3]:
 
 
 
 
-# import numpy as np
 
-# # Your integer labels
-
-
-# # Find the number of unique labels
-# num_classes = len(np.unique(pred_resnet))
-
-# # Initialize an empty one-hot encoding matrix with zeros
-# pred_resnet = np.zeros((len(pred_resnet), num_classes))
-
-# # Fill the matrix with 1s in the appropriate columns
-# for i, label in enumerate(pred_resnet):
-#     pred_resnet[i, label] = 1
-
-# Print the one-hot encoded matrix
-# print(one_hot_matrix)
+# In[100]:
 
 
-# In[26]:
 
 
-pred_dense
+
+# In[101]:
 
 
-# In[27]:
+
+
+
+# In[4]:
+
+
+
+
+
+# In[5]:
 
 
 weighted_average(one_hot_matrix,pred_dense, acc_dense, pred_resnet, acc_resnet, pred_inception,acc_inception)
@@ -551,6 +644,194 @@ majority_voting(one_hot_matrix,pred_dense, acc_dense, pred_resnet, acc_resnet, p
 averaging(one_hot_matrix,pred_dense, acc_dense, pred_resnet, acc_resnet, pred_inception,acc_inception)
 
             
+
+
+# In[81]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[11]:
+
+
+#sigmoid
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[46]:
+
+
+from tensorflow.keras.models import load_model
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.losses import CategoricalCrossentropy
+
+# Load models with compile=False
+model1 = load_model("unbalanced_densenet_adaptive_DP.h5", compile=False)
+model2 = load_model("unbalanced_ResNet101V2_adaptive_DP.h5", compile=False)
+model3 = load_model("unbalanced_mobilenet_adaptive_DP.h5", compile=False)
+
+# Compile each model
+optimizer = Adam(learning_rate=0.001)  # You can adjust the learning rate as needed
+loss_function =CategoricalCrossentropy()
+
+model1.compile(optimizer=optimizer, loss=loss_function, metrics=['accuracy'])
+model2.compile(optimizer=optimizer, loss=loss_function, metrics=['accuracy'])
+model3.compile(optimizer=optimizer, loss=loss_function, metrics=['accuracy'])
+
+import numpy as np
+test=np.load("test.npy")
+label=np.load("one_hot_labels.npy")
+test=test/255
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[7]:
+
+
+
+
+
+# In[8]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
