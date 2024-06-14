@@ -1,5 +1,5 @@
 # PPFNet
-This repository contains official implementaion of the paper "PPFNet: A Privacy Preserving Federated Network for Cervical Cancer Detection using a Novel Ensemble Technique".
+This repository contains official implementaion of the paper "Privacy Preserving Federated Learning for Cervical Cancer Detection using a Power-weighted Ensemble Technique".
 Steps to run the algorithms:
 1) run Data_creation.py after changing the data distribution you want.
 2) run Proposed method without DP.py i.e. without any differential privacy(DP). It will load data and run data_augmentation.py to use normal and advance augmentaion to the data, then runs the algorithm.
